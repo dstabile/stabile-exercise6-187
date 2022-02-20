@@ -1,0 +1,63 @@
+package edu.course.stabile.exercise6;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class WriteOrder 
+{
+	//declare and initialize class attributes
+	private boolean fileFoundFlag = false;
+	private String masterFileName = "";
+	private int recordCount = 0;
+	
+	//constructor//
+	
+	//non-default constructor
+	WriteOrder(String borrowedFileName)
+	{
+		masterFileName = borrowedFileName;
+	}//end non-default constructor
+	
+	//setter to write order
+	public void setWriteOrder(int borrowedItemID, String borrowedItemName, double borrowedItemPrice,
+			int borrowedQuantity, double borrowedOrderCost)
+	{
+		//try block will try to open file
+		try 
+		{
+			//instantiation statement to open file
+			PrintWriter filePW = new PrintWriter(new FileWriter(masterFileName, true));
+			//this statement writes borrowed values to file
+			filePW.printf("%n%d\t%s\t%.2f\t%d\t%.2f", borrowedItemID, borrowedItemName, borrowedItemPrice, borrowedQuantity,
+					borrowedOrderCost);
+			fileFoundFlag = true;
+			recordCount++;
+			//close PrintWriter/File
+			filePW.close();
+		}//end of try
+		//catch block to catch errors if try block fails
+		catch(IOException ex)
+		{
+			fileFoundFlag = false;
+		}//end of catch block
+	}//end setWrite Order
+	
+	//getFileFoundFlag
+	public boolean getFileFoundFlag()
+	{
+		return fileFoundFlag;
+	}//end getFileFoundFlag
+	
+	//getFileName
+	public String getFileName()
+	{
+		return masterFileName;
+	}//end getFileName
+	
+	//getRecordCount
+	public int getRecordCount()
+	{
+		return recordCount;
+	}//end getRecordCount
+}//end class WriteOrder
