@@ -1,0 +1,2 @@
+# stabile-exercise6-187
+This program will allow a customer to login to a user account, if they have created one, or they may create one. They select items for purchase from a file and enter the ID number for each to view its cost and availability. Once they have completed their order they receive an order report, breaking down their discount, if applicable, the quantity and final total.  When they exit the program, they are provided with a final report outlining their purchases
